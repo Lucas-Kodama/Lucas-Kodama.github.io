@@ -6,8 +6,8 @@ var score =0;
 var T = "Chase the Bag";
 
 function preload() {
-//img = loadImage('cashmoney.png');
- img = loadImage('http://lucas-kodama.github.io/cashmoney.jpg');  
+img = loadImage('cashmoney.png');
+// img = loadImage('http://lucas-kodama.github.io/cashmoney.jpg');  
 }
   
 
