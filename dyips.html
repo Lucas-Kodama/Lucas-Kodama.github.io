@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>navigation</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+<!-- Popper JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<nav class="navbar navbar-expand-sm bg-light navbar-light">
+ <ul class="navbar-nav">
+ 	<li class="nav-item"><a class="nav-link" href="index.html">home</a></li>
+	<li class="nav-item"><a class="nav-link" href="glitch.html">glitch</a></li>
+	<li class="nav-item"><a class="nav-link" href="meme.html">meme</a></li>
+    <li class="nav-item"><a class="nav-link" href="minecraft.html">minecraft</a>      </li>
+	 <li class="nav-item"><a class="nav-link" href="3d.html">3d-print</a></li>
+    <li class="nav-item"><a class="nav-link" href="netart.html">net-art</a></li>
+    <li class="nav-item"><a class="nav-link" href="code-as-art.html">code art</a></li>
+<li class="nav-item"><a class="nav-link" href="dyips.html">dyips</a></li>
+<li class="nav-item"><a class="nav-link" href="code-as-art-game.html">game</a></li>
+
+</ul> 
+</nav>
+<div class="container-fluid">
+
+<h1>DIY Photoshop</h1>
+<p>This is my take on DIY Photoshop and re-tooling, using Code as Art.</p>
+<br>
+<img src="budgetps.png" class="rounded img-fluid" alt="BudgetPhotoshop">
+<br>
+
+
+<p>
+Code:
+<br>
+var img;
+<br>
+var initials ='lk'; // your initials
+<br>
+var choice = '1'; // starting choice, so it is not empty
+<br>
+var screenbg = 250; // off white background
+<br>
+var lastscreenshot=61; // last screenshot never taken
+<br>
+function preload() {
+<br>
+// preload() runs once, it may make you wait
+<br>
+// img = loadImage('Panpan.png'); // cat.jpg needs to be next to this .js file
+<br>
+// you can link to an image on your github account
+<br>
+img = loadImage('https://lucas-kodama.github.io/panpan.png');
+<br>
+}
+<br>
+function setup() {
+<br>
+createCanvas(600, 600); // canvas size
+<br>
+background(screenbg); // use our background screen color
+<br>
+}
+<br>
+function draw() {
+<br>
+if (keyIsPressed) {
+<br>
+choice = key; // set choice to the key that was pressed
+<br>
+clear_print(); // check to see if it is clear screen or save image
+<br>
+}
+<br>
+if (mouseIsPressed){
+<br>
+newkeyChoice(choice); // if the mouse is pressed call newkeyChoice
+<br>
+}
+<br>
+}
+<br>
+function newkeyChoice(toolChoice) { //toolchoice is the key that was pressed
+<br>
+// the key mapping if statements that you can change to do anything you want.
+<br>
+// just make sure each key option has the a stroke or fill and then what type of
+<br>
+// graphic function
+<br>
+
+if (toolChoice == '1' ) { // first tool
+<br>
+stroke(01);
+<br>
+line(mouseX, mouseY, pmouseX, pmouseY);
+<br>
+} else if (toolChoice == '2') { // second tool
+<br>
+stroke(0,0,255);
+<br>
+line(mouseX, mouseY, pmouseX, pmouseY);
+<br>
+} else if (toolChoice == '3') { // third tool
+<br>
+stroke(255,0,0);
+<br>
+line(mouseX, mouseY, pmouseX, pmouseY);
+<br>
+} else if (toolChoice == '4') {
+<br>
+stroke(255, 255, 51);
+<br>
+line(mouseX, mouseY, pmouseX, pmouseY);
+<br>
+} else if (key == '5') { // this tool calls a function
+<br>
+stroke(0);
+<br>
+testbox(200, 20, 100);
+<br>
+testbox(51, 153, 255);
+<br>
+
+
+
+// make testbox do something!
+<br>
+// line(mouseX, mouseY, pmouseX, pmouseY);
+<br>
+} else if (toolChoice == '6') {
+<br>
+stroke(255);
+<br>
+testbox(200,20,100);
+<br>
+testbox(255,0,0);
+<br>
+} else if (toolChoice == '7') {
+<br>
+fill(255,0, 2558);
+<br>
+ellipse(mouseX, mouseY, 40, 20);
+<br>
+} else if (toolChoice == '8') {
+<br>
+fill(127, 0, 255);
+<br>
+rect(mouseX, mouseY, 40, 20);
+<br>
+} else if (toolChoice == '9') {
+<br>
+fill(0);
+<br>
+rect(mouseX, mouseY, 30, 300);
+<br>
+} else if (toolChoice == '0') {
+<br>
+stroke(0, 0);
+<br>
+fill(random(255), random(255), random(255), random(255));
+<br>
+ellipse(mouseX, mouseY, 60, 60);
+<br>
+} else if (toolChoice == 'g' || toolChoice == 'G') { // g places the image we pre-loaded
+image(img, mouseX, mouseY);
+<br>
+}
+<br>
+}
+<br>
+function testbox(r, g, b) {
+<br>
+// this is a test function that will show you how you can put your own functions into the sketch
+<br>
+x = mouseX;
+<br>
+y = mouseY;
+<br>
+fill(r, g, b);
+<br>
+rect(x-50, y-50, 100, 100);
+<br>
+}
+<br>
+function clear_print() {
+<br>
+// this will do one of two things, x clears the screen by resetting the background
+<br>
+// p calls the routine saveme, which saves a copy of the screen
+<br>
+if (key == 'x' || key == 'X') {
+<br>
+background(screenbg); // set the screen back to the background color
+<br>
+} else if (key == 'p' || key == 'P') {
+<br>
+saveme(); // call saveme which saves an image of the screen
+<br>
+
+
+}
+<br>
+}
+<br>
+function saveme(){
+<br>
+//this will save the name as the intials, date, time and a millis counting number.
+<br>
+// it will always be larger in value then the last one.
+<br>
+filename=initials+day() + hour() + minute() +second();
+<br>
+if (second()!=lastscreenshot) { // don't take a screenshot if you just took one
+<br>
+saveCanvas(filename, 'jpg');
+<br>
+}
+<br>
+lastscreenshot=second(); // set this to the current second so no more than one per second
+<br>
+}
+<br>
+</p>
+
+
+
+</div>
+
+
+
+</body>
+</html>
